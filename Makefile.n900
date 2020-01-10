@@ -34,8 +34,8 @@ MORE_CFLAGS += \
 MORE_CFLAGS += -DMAEMO_CHANGES -DSIXAXIS_SUPPORT
 
 ifeq ($(DEB_HOST_ARCH),armhf)
-MORE_CFLAGS += -mcpu=cortex-a8 -mtune=cortex-a8 -mfloat-abi=softfp -mfpu=neon
-MORE_CFLAGS += -msoft-float -mstructure-size-boundary=32
+MORE_CFLAGS += -mcpu=cortex-a8 -mtune=cortex-a8 -mfloat-abi=hardfp -mfpu=neon
+MORE_CFLAGS += -mhard-float -mstructure-size-boundary=32
 MORE_CFLAGS +=  -DSDL_SCALER=\"arm2x\"
 else
 MORE_CFLAGS +=  -DSDL_SCALER=\"soft2x\"
@@ -51,7 +51,7 @@ else
 MORE_CFLAGS += -ggdb
 endif
 
-ASFLAGS += -mcpu=cortex-a8 -mfloat-abi=softfp -mfpu=neon
+ASFLAGS += -mcpu=cortex-a8 -mfloat-abi=hardfp -mfpu=neon
 
 #MORE_CFLAGS+= -DDOUBLEBUFFER
 MORE_CFLAGS+= -DMENU_MUSIC
