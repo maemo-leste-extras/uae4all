@@ -7,6 +7,8 @@ STRIP  = strip
 
 PROG   = $(NAME)
 
+DEB_HOST_ARCH ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
+
 all: $(PROG)
 
 #DEBUG=1
@@ -31,7 +33,7 @@ MORE_CFLAGS += \
 
 MORE_CFLAGS += -DMAEMO_CHANGES -DSIXAXIS_SUPPORT
 
-ifeq ($(SBOX_DPKG_INST_ARCH),armel)
+ifeq ($(DEB_HOST_ARCH),armhf)
 MORE_CFLAGS += -mcpu=cortex-a8 -mtune=cortex-a8 -mfloat-abi=softfp -mfpu=neon
 MORE_CFLAGS += -msoft-float -mstructure-size-boundary=32
 MORE_CFLAGS +=  -DSDL_SCALER=\"arm2x\"
@@ -144,7 +146,7 @@ OBJS =	\
 	src/maemo/keyboard.o \
 	src/maemo/sdlvscalers.o
 
-ifeq ($(SBOX_DPKG_INST_ARCH),armhf)
+ifeq ($(DEB_HOST_ARCH),armhf)
 OBJS+= \
 	src/maemo/memcpy.o \
 	src/maemo/memset.o
