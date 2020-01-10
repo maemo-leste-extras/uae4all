@@ -144,7 +144,7 @@ OBJS =	\
 	src/maemo/keyboard.o \
 	src/maemo/sdlvscalers.o
 
-ifeq ($(SBOX_DPKG_INST_ARCH),armel)
+ifeq ($(SBOX_DPKG_INST_ARCH),armhf)
 OBJS+= \
 	src/maemo/memcpy.o \
 	src/maemo/memset.o
